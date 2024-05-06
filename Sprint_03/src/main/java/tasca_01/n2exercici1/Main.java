@@ -1,6 +1,14 @@
 package tasca_01.n2exercici1;
 
 
+import org.w3c.dom.ls.LSOutput;
+import tasca_01.n2exercici1.factories.AbstractContactFactory;
+import tasca_01.n2exercici1.factories.InternationalFactory;
+import tasca_01.n2exercici1.factories.NationalFactory;
+
 public class Main {
-    //factory address national i international crear-les aquí i imprimir-les per pantalla l'objecte
+    AbstractContactFactory a = new AbstractContactFactory();
+    InternationalFactory i = a.getInternational();
+    NationalFactory n = a.getNational();
+    System.out.println();
 }
