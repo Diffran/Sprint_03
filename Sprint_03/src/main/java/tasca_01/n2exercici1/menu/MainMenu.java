@@ -8,20 +8,23 @@ public class MainMenu {
     private static String option;
     private static Scanner sc = new Scanner(System.in);
     public static void mainMenu(){
-        System.out.println("-----------------AGENDA--------------------------");
-        System.out.println("1- ADD CONTACT");
-        System.out.println("2- LIST CONTACTS");
-        System.out.println("3- EXIT");
-        System.out.println("choose an option: ");
-
-        option = sc.nextLine();
         do{
+            System.out.println("-----------------CONTACT LIST MANAGEMENT-------------------------");
+            System.out.println("1- ADD CONTACT");
+            System.out.println("2- LIST CONTACTS");
+            System.out.println("3- EXIT");
+            System.out.println("choose an option: ");
+
+
+            option = sc.nextLine();
             try{
                 switch(option){
                     case "1":
                         Contact.createContact();
+                        break;
                     case "2":
                         Contact.listContacts();
+                        break;
                     case "3":
                         System.exit(0);
                     default:

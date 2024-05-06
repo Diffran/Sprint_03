@@ -52,8 +52,8 @@ public class Contact {
         System.out.println("enter contact phonenumber:");
         phone = Integer.parseInt(sc.nextLine());
         System.out.println("enter contact street:");
-        name = sc.nextLine();
-        System.out.println("enter contact number:");
+        street = sc.nextLine();
+        System.out.println("enter contact building number:");
         number = Integer.parseInt(sc.nextLine());
         System.out.println("enter contact floor:");
         floor = Integer.parseInt(sc.nextLine());
