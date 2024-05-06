@@ -6,7 +6,5 @@ import tasca_01.n2exercici1.phones.USAPhone;
 import tasca_01.n2exercici1.phones.XPhone;
 
 public class Main {
-    public static void main(String[] args) {
-        MainMenu.mainMenu();
-    }
+    //factory address national i international crear-les aquí i imprimir-les per pantalla l'objecte
 }
