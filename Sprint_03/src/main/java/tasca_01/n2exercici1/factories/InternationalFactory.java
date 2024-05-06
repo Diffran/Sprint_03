@@ -10,7 +10,7 @@ import tasca_01.n2exercici1.international.Xina;
 
 public class InternationalFactory {
 
-    public static InternationalI getContact(String name, int phone, String street, int number, int floor, int door, String zipCode, String city, String country) throws InvalidOption {
+    public InternationalI getContact(String name, int phone, String street, int number, int floor, int door, String zipCode, String city, String country) throws InvalidOption {
         if(country==null){
             throw new InvalidOption();
         }

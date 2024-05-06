@@ -12,6 +12,7 @@ public class Main {
         AbstractContactFactory a = new AbstractContactFactory();
         InternationalFactory i = a.getInternational();
         NationalFactory n = a.getNational();
+
         try{
             System.out.println(n.getContact("Arturo",45678912,"calle de la calabaza",5,2,1,"08045","MAD"));
         }catch(InvalidOption e){
