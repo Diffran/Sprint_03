@@ -11,7 +11,7 @@ public class BorsaFutur extends Observer{
     }
 
     @Override
-    public void update(){
-        System.out.println("BorsaFutur: "+(broker.getStockExchange()*stockExchangeInvestment));
+    public void update(String update){
+        System.out.println("BorsaFutur: you have -> "+stockExchangeInvestment+" shares -> "+update);
     }
 }

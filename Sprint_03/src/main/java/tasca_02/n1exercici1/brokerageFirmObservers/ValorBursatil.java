@@ -3,7 +3,7 @@ package tasca_02.n1exercici1.brokerageFirmObservers;
 import tasca_02.n1exercici1.Broker;
 
 public class ValorBursatil extends Observer{
-    private double stockExchangeInvestment = 9.3;
+    private double stockExchangeInvestment = 23;
 
     public ValorBursatil(Broker broker) {
         this.broker = broker;
@@ -11,7 +11,7 @@ public class ValorBursatil extends Observer{
     }
 
     @Override
-    public void update(){
-        System.out.println("ValorBursatil: "+(broker.getStockExchange()*stockExchangeInvestment));
+    public void update(String update){
+        System.out.println("ValorBursatil: you have -> "+stockExchangeInvestment+" shares -> "+update);
     }
 }

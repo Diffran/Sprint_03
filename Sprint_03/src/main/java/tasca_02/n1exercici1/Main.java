@@ -12,11 +12,14 @@ public class Main {
         new BorsaFutur(broker);
         new ValorBursatil(broker);
 
-        System.out.println("-----CANVI INDEX BORSA-----");
-        System.out.println("el index de la borsa és: 3.4");
-        broker.setStockExchange(3.4);
+
+
         System.out.println("-----CANVI INDEX BORSA-----");
         System.out.println("el index de la borsa és: 6.6");
         broker.setStockExchange(6.5);
+        System.out.println("-----CANVI INDEX BORSA-----");
+        System.out.println("el index de la borsa és: 3.4");
+        broker.setStockExchange(3.4);
+
     }
 }

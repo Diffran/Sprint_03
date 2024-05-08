@@ -11,7 +11,7 @@ public class BorsaConnect extends Observer{
     }
 
     @Override
-    public void update(){
-        System.out.println("BorsaConnect: "+(broker.getStockExchange()*stockExchangeInvestment));
+    public void update(String update){
+        System.out.println("BorsaConnect: you have -> "+stockExchangeInvestment+" shares -> "+update);
     }
 }
