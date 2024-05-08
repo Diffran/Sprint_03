@@ -16,7 +16,8 @@ public class Menu {
             System.out.println("1- ADD ORDER");
             System.out.println("2- DELETE ORDER");
             System.out.println("3- LIST ORDERS");
-            System.out.println("4- EXIT");
+            System.out.println("4- LIST UNDO");
+            System.out.println("5- EXIT");
             System.out.println("Choose an option: ");
             try {
                 option = sc.nextLine();
@@ -31,14 +32,19 @@ public class Menu {
                         undo.list();
                         break;
                     case "4":
+                        undo.undoList();
+                        break;
+                    case "5":
                         exit(0);
                     default:
                         System.out.println("ERROR: Invalid Option, enter a valid number.");
+                        Undo.getUndo().add("ERROR: Invalid Option, enter a valid number.");
                 }
             }catch(NumberFormatException e){
+                Undo.getUndo().add("ERROR: "+e.getMessage()+" - Please enter a integer");
                 System.out.println("ERROR: "+e.getMessage()+" - Please enter a integer");
             }
-        }while(!option.equals("4"));
+        }while(!option.equals("5"));
     }
     private static String removeMenu() throws NumberFormatException{
         System.out.println("Please enter order ID: ");
