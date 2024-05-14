@@ -37,10 +37,12 @@ public class Demo {
                 }
             }catch(InvalidOption e){
                 System.out.println(e.getMessage());
+            }catch(NumberFormatException e){
+                System.out.println("Please enter a Integer");
             }
         }while(!option.equals("3"));
     }
-    private static void createNewContact() throws InvalidOption{
+    private static void createNewContact() throws InvalidOption, NumberFormatException{
         Pattern phoneNumberPattern = null;
 
         System.out.println("------COUNTRY MENU--------");
@@ -79,6 +81,7 @@ public class Demo {
         if(!phoneNumberPattern.matcher(phoneNumber).matches()){
             throw new InvalidOption();
         }
+        int intComprovation = Integer.parseInt(phoneNumber);
 
         Contact contact = new Contact(name, factory.createAddress(address), factory.createPhoneNumber(phoneNumber) );
         contactList.add(contact);

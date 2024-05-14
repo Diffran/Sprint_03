@@ -30,7 +30,7 @@ public class MainMenu {
                         store.toString();
                         break;
                     case "3":
-                        System.out.println("Opción 3 seleccionada: PAY");
+                        store.makePayment();
                         break;
                     case "4":
                         store = new ShoeStore();

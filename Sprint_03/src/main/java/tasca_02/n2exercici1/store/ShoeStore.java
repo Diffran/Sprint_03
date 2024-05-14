@@ -65,6 +65,8 @@ public class ShoeStore {
                 "final price: ---------->" + getTotalPrice();
     }
 
-    //tipus de pagament utilitza el Callback
+    public void makePayment(){
+
+    }
 
 }
