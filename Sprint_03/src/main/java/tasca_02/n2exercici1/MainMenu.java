@@ -30,7 +30,7 @@ public class MainMenu {
                         store.toString();
                         break;
                     case "3":
-                        store.makePayment();
+                        store.makePayment(store.getTotalPrice());
                         break;
                     case "4":
                         store = new ShoeStore();

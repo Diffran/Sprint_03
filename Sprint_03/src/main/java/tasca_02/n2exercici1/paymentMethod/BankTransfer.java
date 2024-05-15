@@ -5,8 +5,7 @@ public class BankTransfer implements CallbackPayment{
         System.out.println("processing Bank Payment ");
     }
     @Override
-    public void payment(String paymentMethod) {
-
-
+    public void payment(String message, double amount) {
+        System.out.println("Paid: "+ amount + " € - with Bank transfer - "+ message);
     }
 }

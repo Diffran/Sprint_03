@@ -1,6 +1,7 @@
 package tasca_02.n2exercici1.store;
 
 import tasca_02.n2exercici1.exceptions.InvalidOptionException;
+import tasca_02.n2exercici1.paymentMethod.*;
 
 import java.util.*;
 
@@ -11,7 +12,7 @@ public class ShoeStore {
     private static Shoe s1 = new Shoe(Item.ADIDAS_SAMBA.getName(), Item.ADIDAS_SAMBA.getPrice());
     private static Shoe s2 = new Shoe(Item.ALL_STAR_CONVERSE.getName(), Item.ALL_STAR_CONVERSE.getPrice());
     private static Shoe s3 = new Shoe(Item.AIR_JORDANS.getName(), Item.AIR_JORDANS.getPrice());
-
+    private static PaymentGateway paymentGateway = new PaymentGateway();
     private HashMap<Shoe,Integer> order = new HashMap<>(){{
         put(s1, 0);
         put(s2, 0);
@@ -50,7 +51,7 @@ public class ShoeStore {
         }
         return text;
     }
-    private double getTotalPrice(){
+    public double getTotalPrice(){
         double price=0;
         for (Map.Entry<Shoe, Integer> entry : order.entrySet()) {
             Shoe shoe = entry.getKey();
@@ -65,7 +66,8 @@ public class ShoeStore {
                 "final price: ---------->" + getTotalPrice();
     }
 
-    public void makePayment() throws InvalidOptionException{
+    public void makePayment(double amount) throws InvalidOptionException{
+        CallbackPayment callback;
         System.out.println("---------------PAYMENT MENU--------------");
         System.out.println("1- PAYPAL");
         System.out.println("2- CREDIT CARD");
@@ -75,17 +77,18 @@ public class ShoeStore {
         option = sc.nextLine();
         switch (option) {
             case "1":
-                //paypal
+                callback = new PayPal();
                 break;
             case "2":
-                //credit card
+                callback = new CreditCard();
                 break;
             case "3":
-                //bank transfer
+                callback = new BankTransfer();
                 break;
             default:
                 throw new InvalidOptionException();
         }
+        paymentGateway.processPayment(callback,amount);
     }
 
 }
