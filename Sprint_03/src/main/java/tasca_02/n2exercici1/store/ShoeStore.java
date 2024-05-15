@@ -65,8 +65,27 @@ public class ShoeStore {
                 "final price: ---------->" + getTotalPrice();
     }
 
-    public void makePayment(){
+    public void makePayment() throws InvalidOptionException{
+        System.out.println("---------------PAYMENT MENU--------------");
+        System.out.println("1- PAYPAL");
+        System.out.println("2- CREDIT CARD");
+        System.out.println("3- BANK TRANSFER");
+        System.out.println("choose payment type");
 
+        option = sc.nextLine();
+        switch (option) {
+            case "1":
+                //paypal
+                break;
+            case "2":
+                //credit card
+                break;
+            case "3":
+                //bank transfer
+                break;
+            default:
+                throw new InvalidOptionException();
+        }
     }
 
 }
