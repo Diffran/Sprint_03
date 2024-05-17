@@ -18,7 +18,7 @@ public class MainMenu {
             System.out.println("2- LIST ITEMS");
             System.out.println("3- PAY");
             System.out.println("4- NEW PURCHASE");
-            System.out.println("4- EXIT");
+            System.out.println("5- EXIT");
 
             try {
                 option = sc.nextLine();
@@ -27,13 +27,14 @@ public class MainMenu {
                         store.addItem();
                         break;
                     case "2":
-                        store.toString();
+                        System.out.println(store.toString());
                         break;
                     case "3":
                         store.makePayment(store.getTotalPrice());
                         break;
                     case "4":
-                        store = new ShoeStore();
+                        store.newOrder();
+                        break;
                     case"5":
                         exit(0);
                     default:
