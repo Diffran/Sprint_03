@@ -27,6 +27,9 @@ public class Broker {
     public static void attach(Observer observer){
         observers.add(observer);
     }
+    public static void removeObserver(Observer observer){
+        observers.remove(observer);
+    }
     public static void notifyAllBrokerageFirms(String update){
         observers.forEach(observador -> observador.update(update));
     }

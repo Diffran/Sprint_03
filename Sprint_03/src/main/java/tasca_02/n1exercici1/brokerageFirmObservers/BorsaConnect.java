@@ -14,4 +14,5 @@ public class BorsaConnect extends Observer{
     public void update(String update){
         System.out.println("BorsaConnect: you have -> "+stockExchangeInvestment+" shares -> "+update);
     }
+
 }
