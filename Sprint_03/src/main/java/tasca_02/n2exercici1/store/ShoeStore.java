@@ -8,12 +8,13 @@ import java.util.*;
 
 public class ShoeStore {
     private static String option;
+    private static StringBuilder orderToText = new StringBuilder();
     private static Scanner sc = new Scanner(System.in);
     private static Shoe s1 = new Shoe(Item.ADIDAS_SAMBA.getName(), Item.ADIDAS_SAMBA.getPrice());
     private static Shoe s2 = new Shoe(Item.ALL_STAR_CONVERSE.getName(), Item.ALL_STAR_CONVERSE.getPrice());
     private static Shoe s3 = new Shoe(Item.AIR_JORDANS.getName(), Item.AIR_JORDANS.getPrice());
     private static PaymentGateway paymentGateway = new PaymentGateway();
-    private HashMap<Shoe,Integer> order = new HashMap<>(){{
+    private static HashMap<Shoe,Integer> order = new HashMap<>(){{
         put(s1, 0);
         put(s2, 0);
         put(s3, 0);
@@ -44,12 +45,14 @@ public class ShoeStore {
     }
 
     private String orderToString(){
-        String text="";
         for (Map.Entry<Shoe, Integer> entry : order.entrySet()) {
             Shoe shoe = entry.getKey();
-            text.concat(shoe.getName() + " -> "+shoe.getPrice()+"  x" + entry.getValue()+"\n");
+            orderToText.append(shoe.toString())
+                    .append("   x")
+                    .append(entry.getValue())
+                    .append("\n");
         }
-        return text;
+        return orderToText.toString();
     }
     public double getTotalPrice(){
         double price=0;
@@ -61,9 +64,13 @@ public class ShoeStore {
     }
     @Override
     public String toString() {
-        return "---------------------Order----------------------\n" +
+        String order =
+         "---------------------Order----------------------\n" +
                 orderToString() +
                 "final price: ---------->" + getTotalPrice();
+        //I empty the String builder cause if not it will keep adding String everytime i call it
+        orderToText.setLength(0);
+        return order;
     }
 
     public void makePayment(double amount) throws InvalidOptionException{
@@ -89,6 +96,12 @@ public class ShoeStore {
                 throw new InvalidOptionException();
         }
         paymentGateway.processPayment(callback,amount);
+    }
+
+    public void newOrder(){
+        order.replace(s1,0);
+        order.replace(s2,0);
+        order.replace(s3,0);
     }
 
 }
