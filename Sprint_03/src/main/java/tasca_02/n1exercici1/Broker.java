@@ -1,12 +1,13 @@
 package tasca_02.n1exercici1;
 
 import tasca_02.n1exercici1.interfaces.IObservable;
+import tasca_02.n1exercici1.interfaces.IObserver;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Broker implements IObservable {
-    private static List<Observer> observers = new ArrayList<Observer>();
+    private static List<IObserver> observers = new ArrayList<IObserver>();
     private static double stockExchange = 1;
     private static String update;
 
@@ -24,10 +25,11 @@ public class Broker implements IObservable {
         notifyAllBrokerageFirms(update);
     }
 
-    public static void attach(Observer observer){
-        observers.add(observer);
+    @Override
+    public  void addObserver(IObserver agency){
+        this.observers.add(agency);
     }
-    public static void removeObserver(Observer observer){
+    public static void removeObserver(IObserver observer){
         observers.remove(observer);
     }
     public static void notifyAllBrokerageFirms(String update){
