@@ -1,11 +1,11 @@
 package tasca_02.n1exercici1;
 
-import tasca_02.n1exercici1.brokerageFirmObservers.Observer;
+import tasca_02.n1exercici1.interfaces.IObservable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Broker {
+public class Broker implements IObservable {
     private static List<Observer> observers = new ArrayList<Observer>();
     private static double stockExchange = 1;
     private static String update;

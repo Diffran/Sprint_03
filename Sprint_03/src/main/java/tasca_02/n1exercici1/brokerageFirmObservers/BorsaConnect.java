@@ -1,8 +1,9 @@
 package tasca_02.n1exercici1.brokerageFirmObservers;
 
 import tasca_02.n1exercici1.Broker;
+import tasca_02.n1exercici1.interfaces.IObserver;
 
-public class BorsaConnect extends Observer{
+public class BorsaConnect implements IObserver {
     private double stockExchangeInvestment = 5.4;
 
     public BorsaConnect(Broker broker) {
@@ -11,7 +12,7 @@ public class BorsaConnect extends Observer{
     }
 
     @Override
-    public void update(String update){
+    public void update(boolean stockMarketStatus){
         System.out.println("BorsaConnect: you have -> "+stockExchangeInvestment+" shares -> "+update);
     }
 
