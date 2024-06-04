@@ -4,4 +4,5 @@ public interface IObservable {
     void addObserver(IObserver object);
     void removeObserver(IObserver object);
     void notifyObservers();
+    void listObservers();
 }

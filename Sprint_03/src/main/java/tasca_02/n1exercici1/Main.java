@@ -1,25 +1,32 @@
 package tasca_02.n1exercici1;
 
-import tasca_02.n1exercici1.brokerageFirmObservers.BorsaConnect;
-import tasca_02.n1exercici1.brokerageFirmObservers.BorsaFutur;
-import tasca_02.n1exercici1.brokerageFirmObservers.ValorBursatil;
 
 public class Main {
     public static void main(String[] args) {
-        Broker broker = new Broker();
+        Broker broker = new Broker("The broker");
 
-        new BorsaConnect(broker);
-        new BorsaFutur(broker);
-        new ValorBursatil(broker);
+        Agency borsaFutur = new Agency("Borsa Futur");
+        Agency ConnectBorsa = new Agency("Connect Borsa");
+        Agency leBorse = new Agency("Le Borse");
 
+        broker.addObserver(borsaFutur);
+        broker.addObserver(ConnectBorsa);
+        broker.addObserver(leBorse);
 
+        System.out.println("AGENCIES LIST");
+        broker.listObservers();
 
-        System.out.println("-----CANVI INDEX BORSA-----");
-        System.out.println("el index de la borsa és: 6.6");
-        broker.setStockExchange(6.5);
-        System.out.println("-----CANVI INDEX BORSA-----");
-        System.out.println("el index de la borsa és: 3.4");
-        broker.setStockExchange(3.4);
+        System.out.println("\nCHANGING STOCK EXCHANGE");
+        System.out.println("RISING: ");
+        broker.setStockExchange(1.5);
+        System.out.println("FALLING: ");
+        broker.setStockExchange(0.9);
+        System.out.println("RAISING");
+        broker.setStockExchange(1.1);
 
+        System.out.println("\nREMOVING AN AGENCY");
+        broker.removeObserver(borsaFutur);
+        System.out.println("\nAGENCY LIST");
+        broker.listObservers();
     }
 }

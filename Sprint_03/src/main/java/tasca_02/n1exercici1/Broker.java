@@ -10,29 +10,40 @@ public class Broker implements IObservable {
     private static List<IObserver> observers = new ArrayList<IObserver>();
     private static double stockExchange = 1;
     private static String update;
+    private final String name;
+
+    public Broker(String name) {
+        this.name = name;
+    }
 
     public static double getStockExchange() {
         return stockExchange;
     }
 
-    public static void setStockExchange(double stockExchange) {
-        if(Broker.stockExchange > stockExchange){
+    public  void setStockExchange(double stockExchange) {
+        if(this.stockExchange > stockExchange){
             update = "The stock market has fallen.";
         }else{
             update = "The stock market has risen";
         }
-        Broker.stockExchange = stockExchange;
-        notifyAllBrokerageFirms(update);
+        this.stockExchange = stockExchange;
+        notifyObservers();
     }
 
     @Override
     public  void addObserver(IObserver agency){
         this.observers.add(agency);
     }
-    public static void removeObserver(IObserver observer){
+    public  void removeObserver(IObserver observer){
         observers.remove(observer);
     }
-    public static void notifyAllBrokerageFirms(String update){
+    @Override
+    public void notifyObservers(){
         observers.forEach(observador -> observador.update(update));
+    }
+
+    @Override
+    public void listObservers() {
+        observers.forEach(System.out::println);
     }
 }
